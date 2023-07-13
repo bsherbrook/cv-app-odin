@@ -1,37 +1,18 @@
 import React, { Component } from 'react';
 
 class MyForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      school: '',
-      major:'',
-      dates: ''
-    };
-  }
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('School:', this.state.school);
-    console.log('Major:', this.state.major);
-    console.log('Dates:', this.state.dates);
-  }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.props.handleSubmit}>
         <label>
           School:
           <input
             type="text"
             name="school"
-            value={this.state.school}
-            onChange={this.handleChange}
+            id='schoolInput'
+            value={this.props.state.school}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -40,8 +21,9 @@ class MyForm extends Component {
           <input
             type="text"
             name="major"
-            value={this.state.major}
-            onChange={this.handleChange}
+            id='majorInput'
+            value={this.props.state.major}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -50,12 +32,12 @@ class MyForm extends Component {
           <input
             type="text"
             name="dates"
-            value={this.state.dates}
-            onChange={this.handleChange}
+            id='datesInput'
+            value={this.props.state.dates}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
-        <input type="submit" value="Submit" />
       </form>
     );
   }

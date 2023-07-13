@@ -1,43 +1,17 @@
 import React, { Component } from 'react';
 
 class MyForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      company: '',
-      city:'',
-      from: '',
-      to: '',
-      role:'',
-      description:''
-    };
-  }
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Company:', this.state.company);
-    console.log('City:', this.state.city);
-    console.log('From:', this.state.from);
-    console.log('To:', this.state.to);
-    console.log('Role:', this.state.role);
-    console.log('Description:', this.state.description);
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.props.handleSubmit}>
         <label>
           Company:
           <input
             type="text"
+            id='companyInput'
             name="company"
-            value={this.state.company}
-            onChange={this.handleChange}
+            value={this.props.state.company}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -46,8 +20,9 @@ class MyForm extends Component {
           <input
             type="text"
             name="city"
-            value={this.state.city}
-            onChange={this.handleChange}
+            id='cityInput'
+            value={this.props.state.city}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -56,8 +31,9 @@ class MyForm extends Component {
           <input
             type="text"
             name="from"
-            value={this.state.from}
-            onChange={this.handleChange}
+            id='fromInput'
+            value={this.props.state.from}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -66,8 +42,9 @@ class MyForm extends Component {
           <input
             type="text"
             name="to"
-            value={this.state.to}
-            onChange={this.handleChange}
+            id='toInput'
+            value={this.props.state.to}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -75,9 +52,10 @@ class MyForm extends Component {
           Role:
           <input
             type="text"
-            name="role"
-            value={this.state.role}
-            onChange={this.handleChange}
+            name="formerRole"
+            id='formerRoleInput'
+            value={this.props.state.formerRole}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
@@ -87,13 +65,14 @@ class MyForm extends Component {
             rows='4'
             columns='30'
             type="text"
+            id='descriptionInput'
             name="description"
-            value={this.state.description}
-            onChange={this.handleChange}
+            value={this.props.state.description}
+            onChange={this.props.handleChange}
           />
         </label>
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" onClick={this.props.handleClear}/>
       </form>
     );
   }
